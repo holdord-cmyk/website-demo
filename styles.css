@@ -1,0 +1,280 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Navigation */
+.navbar {
+    background-color: #1d506b;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffd60a;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 0.5rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.75rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    display: block;
+}
+
+.nav-links a:hover {
+    background-color: rgba(255, 214, 10, 0.2);
+}
+
+.nav-links a.active {
+    background-color: #ffd60a;
+    color: #1d506b;
+}
+
+/* Header */
+header {
+    background-color: #33677d;
+    color: white;
+    padding: 3rem 2rem;
+    text-align: center;
+}
+
+header img {
+    width: 600px;
+    height: 300px;
+    object-fit: cover;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+header h2 {
+    font-size: 1.3rem;
+    font-weight: normal;
+    color: #ffd60a;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Sections */
+section {
+    background-color: white;
+    margin-bottom: 2rem;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+section h2 {
+    color: #1d506b;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    border-bottom: 3px solid #ffd60a;
+    padding-bottom: 0.5rem;
+}
+
+section p {
+    margin-bottom: 1rem;
+    color: #555;
+}
+
+section ul {
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+}
+
+section li {
+    margin-bottom: 0.5rem;
+    color: #555;
+}
+
+/* Links */
+a {
+    color: #1d506b;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #ff6b35;
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+th {
+    background-color: #1d506b;
+    color: white;
+    padding: 1rem;
+    text-align: left;
+}
+
+td {
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f0f0f0;
+}
+
+/* Characters Grid */
+.characters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.character {
+    text-align: center;
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.character img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    margin-bottom: 1rem;
+}
+
+.character h3 {
+    color: #1d506b;
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+}
+
+.character p {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Character Profile */
+.character-profile {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    background-color: #f9f9f9;
+    padding: 2rem;
+    border-radius: 8px;
+    margin: 1rem 0;
+}
+
+.character-profile img {
+    width: 250px;
+    height: 250px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.profile-text p {
+    margin-bottom: 0.8rem;
+    color: #555;
+}
+
+@media (max-width: 768px) {
+    .character-profile {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .character-profile img {
+        width: 200px;
+        height: 200px;
+    }
+
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    .nav-links {
+        gap: 1rem;
+    }
+
+    .nav-links a {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    .characters-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
+    }
+}
+
+/* Blockquote */
+blockquote {
+    background-color: #33677d;
+    color: white;
+    padding: 2rem;
+    border-left: 5px solid #ffd60a;
+    font-size: 1.3rem;
+    font-style: italic;
+    margin: 1rem 0;
+    border-radius: 4px;
+}
+
+/* Footer */
+footer {
+    background-color: #1d506b;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    margin-top: 3rem;
+}
+
+footer p {
+    margin: 0;
+}
