@@ -6,11 +6,11 @@
     <title>Super Monkey Ball Fan Page</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-
+ 
 <body>
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">The Super Monkey Ball Fan Guide</div>
+            <div class="logo">Super Monkey Ball</div>
             <ul class="nav-links">
                 <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="characters.html">Characters</a></li>
@@ -18,13 +18,13 @@
             </ul>
         </div>
     </nav>
-
+ 
     <header>
         <img src="https://assets.nintendo.com/image/upload/c_fill,w_1200/q_auto:best/f_auto/dpr_2.0/store/software/switch/70010000032056/c6011fb28aaae46f72438d72462bf6c32a86473451c15233cfb8859028956b07" alt="Super Monkey Ball" class="header-image">
         <h1>Super Monkey Ball Fan Page</h1>
         <h2>The Ultimate Monkey Adventure</h2>
     </header>
-
+ 
     <main class="container">
         <section>
             <h2>Welcome</h2>
@@ -34,7 +34,7 @@
                 <i>Every stage gets more intense</i> as you progress.
             </p>
         </section>
-
+ 
         <section>
             <h2>Game Modes</h2>
             <table>
@@ -56,40 +56,40 @@
                 </tr>
             </table>
         </section>
-
+ 
         <section>
             <h2>Main Characters</h2>
             <div class="characters-grid">
-                <div class="character">
+                <div class="character" onmouseover="this.querySelector('img').src='Images/aiai.gif'" onmouseout="this.querySelector('img').src='https://bananapedia.wiki.gg/images/thumb/AiAiBR2024.webp/300px-AiAiBR2024.webp?881cb6'">
                     <img src="https://bananapedia.wiki.gg/images/thumb/AiAiBR2024.webp/300px-AiAiBR2024.webp?881cb6" alt="AiAi">
                     <h3>AiAi</h3>
                     <p>The fearless leader</p>
                 </div>
-                <div class="character">
+                <div class="character" onmouseover="this.querySelector('img').src='Images/meme.gif'" onmouseout="this.querySelector('img').src='https://static.wikia.nocookie.net/supermonkeyball/images/f/f0/MeeMee_SMB3D-2.png/revision/latest?cb=20150226001448'">
                     <img src="https://static.wikia.nocookie.net/supermonkeyball/images/f/f0/MeeMee_SMB3D-2.png/revision/latest?cb=20150226001448" alt="MeeMee">
                     <h3>MeeMee</h3>
                     <p>Swift and graceful</p>
                 </div>
-                <div class="character">
+                <div class="character" onmouseover="this.querySelector('img').src='Images/gongon.gif'" onmouseout="this.querySelector('img').src='https://bananapedia.wiki.gg/images/GonGonBR24.webp?f4a90c'">
                     <img src="https://bananapedia.wiki.gg/images/GonGonBR24.webp?f4a90c" alt="GonGon">
                     <h3>GonGon</h3>
                     <p>Strong and steady</p>
                 </div>
-                <div class="character">
+                <div class="character" onmouseover="this.querySelector('img').src='Images/baby.gif'" onmouseout="this.querySelector('img').src='https://static.wikia.nocookie.net/supermonkeyball/images/1/16/7a7a2103befd8aefa815bb9f9ae39bff-1.png/revision/latest?cb=20230211093350'">
                     <img src="https://static.wikia.nocookie.net/supermonkeyball/images/1/16/7a7a2103befd8aefa815bb9f9ae39bff-1.png/revision/latest?cb=20230211093350" alt="Baby">
                     <h3>Baby</h3>
                     <p>Cute and playful</p>
                 </div>
             </div>
         </section>
-
+ 
         <section>
             <h2>Featured Quote</h2>
             <blockquote>
                 "Roll fast, stay balanced, and never fall!"
             </blockquote>
         </section>
-
+ 
         <section>
             <h2>Learn More</h2>
             <p>
@@ -103,10 +103,107 @@
             </p>
         </section>
     </main>
-
+ 
+    <!-- Character Poll Popup -->
+    <div id="pollModal" class="poll-modal">
+        <div class="poll-content">
+            <button class="close-poll" onclick="closePoll()">✕</button>
+            <h3>Who's the Best Character?</h3>
+            <p>Vote for your favorite monkey!</p>
+            
+            <div class="poll-options">
+                <button class="poll-btn" onclick="vote('aiai')">
+                    <span>AiAi</span>
+                    <span class="vote-count" id="aiai-votes">0</span>
+                </button>
+                <button class="poll-btn" onclick="vote('meme')">
+                    <span>MeeMee</span>
+                    <span class="vote-count" id="meme-votes">0</span>
+                </button>
+                <button class="poll-btn" onclick="vote('gongon')">
+                    <span>GonGon</span>
+                    <span class="vote-count" id="gongon-votes">0</span>
+                </button>
+                <button class="poll-btn" onclick="vote('baby')">
+                    <span>Baby</span>
+                    <span class="vote-count" id="baby-votes">0</span>
+                </button>
+            </div>
+            
+            <p class="total-votes">Total Votes: <span id="total-votes">0</span></p>
+        </div>
+    </div>
+ 
+    <script>
+        // Initialize poll votes from localStorage
+        function initPoll() {
+            const votes = {
+                aiai: parseInt(localStorage.getItem('aiai_votes') || '0'),
+                meme: parseInt(localStorage.getItem('meme_votes') || '0'),
+                gongon: parseInt(localStorage.getItem('gongon_votes') || '0'),
+                baby: parseInt(localStorage.getItem('baby_votes') || '0')
+            };
+            
+            document.getElementById('aiai-votes').textContent = votes.aiai;
+            document.getElementById('meme-votes').textContent = votes.meme;
+            document.getElementById('gongon-votes').textContent = votes.gongon;
+            document.getElementById('baby-votes').textContent = votes.baby;
+            
+            const total = votes.aiai + votes.meme + votes.gongon + votes.baby;
+            document.getElementById('total-votes').textContent = total;
+        }
+        
+        function vote(character) {
+            // Check if user has already voted
+            if (localStorage.getItem('has_voted') === 'true') {
+                alert('Thanks for the vote!');
+                return;
+            }
+            
+            const currentVotes = parseInt(localStorage.getItem(character + '_votes') || '0');
+            localStorage.setItem(character + '_votes', currentVotes + 1);
+            localStorage.setItem('has_voted', 'true');
+            
+            // Show thank you message
+            showThankYou();
+            initPoll();
+        }
+        
+        function showThankYou() {
+            const subtitle = document.querySelector('.poll-content p:first-of-type');
+            const pollOptions = document.querySelector('.poll-options');
+            
+            subtitle.style.display = 'none';
+            pollOptions.style.display = 'none';
+            
+            const thankYou = document.createElement('div');
+            thankYou.className = 'thank-you-message';
+            thankYou.innerHTML = '<p>Thanks for the vote!</p><p style="font-size: 0.9rem; color: #999; margin-top: 0.5rem;">Right now there\'s no server to store these votes, but it\'s the spirit that counts!</p>';
+            
+            const pollContent = document.querySelector('.poll-content');
+            const h3 = pollContent.querySelector('h3');
+            h3.parentNode.insertBefore(thankYou, h3.nextSibling);
+        }
+        
+        function closePoll() {
+            document.getElementById('pollModal').style.display = 'none';
+        }
+        
+        // Show poll on page load
+        window.onload = function() {
+            initPoll();
+            document.getElementById('pollModal').style.display = 'flex';
+            
+            // If user already voted
+            if (localStorage.getItem('has_voted') === 'true') {
+                showThankYou();
+            }
+        };
+    </script>
+ 
     <footer>
-        <p>The Super Monkey Ball Fan Guide</p>
+        <p>&copy; 2026 Super Monkey Ball Fan Page</p>
     </footer>
-
+ 
 </body>
 </html>
